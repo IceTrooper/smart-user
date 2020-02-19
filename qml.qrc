@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>graphics/su_icon.ico</file>
+        <file>ApplicationSystemTray.qml</file>
+        <file>MainWindow.qml</file>
+        <file>QtSystemTray.qml</file>
+        <file>Fonts.qml</file>
+        <file>fonts/OpenSans-Bold.ttf</file>
+        <file>fonts/OpenSans-Light.ttf</file>
+        <file>fonts/OpenSans-Regular.ttf</file>
+        <file>pages/HomePage.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>components/drawer/ApplicationDrawer.qml</file>
+        <file>components/drawer/DrawerListModel.qml</file>
+        <file>pages/HardwareStatsPage.qml</file>
+        <file>components/controls/StyledTitleLabel.qml</file>
+        <file>components/controls/StyledLabel.qml</file>
+    </qresource>
+</RCC>
