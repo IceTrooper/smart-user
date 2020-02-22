@@ -5,6 +5,11 @@ ListModel {
 
     ListElement {
         pageName: "Home";
-        pageSource: "sour";
+        pageSource: "qrc:/pages/HomePage.qml";
+    }
+
+    ListElement {
+        pageName: "Hardware Stats";
+        pageSource: "qrc:/pages/HardwareStatsPage.qml";
     }
 }

@@ -13,7 +13,7 @@ Item
     ApplicationDrawer {
         id: applicationDrawer;
         height: mainWindow.height;
-        width: 120;
+        width: 160;
     } //ApplicationDrawer
 
     StackView {

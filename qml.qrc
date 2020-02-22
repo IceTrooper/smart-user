@@ -16,5 +16,13 @@
         <file>pages/HardwareStatsPage.qml</file>
         <file>components/controls/StyledTitleLabel.qml</file>
         <file>components/controls/StyledLabel.qml</file>
+        <file>fonts/NotoSans-Bold.ttf</file>
+        <file>fonts/NotoSans-Italic.ttf</file>
+        <file>fonts/NotoSans-Regular.ttf</file>
+        <file>windows/HardwareStatsWindow.qml</file>
+        <file>fonts/RobotoMono-Bold.ttf</file>
+        <file>fonts/RobotoMono-Light.ttf</file>
+        <file>fonts/RobotoMono-Medium.ttf</file>
+        <file>fonts/RobotoMono-Regular.ttf</file>
     </qresource>
 </RCC>

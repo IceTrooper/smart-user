@@ -18,12 +18,12 @@ Item {
             }
             else {
                 trayMenu.close();
-                if(applicationWindow.visibility === Window.Hidden ||
-                   applicationWindow.visibility === Window.Minimized) {
-                    applicationWindow.show();
+                if(appWindow.visibility === Window.Hidden ||
+                   appWindow.visibility === Window.Minimized) {
+                    appWindow.show();
                 }
                 else {
-                    applicationWindow.hide();
+                    appWindow.hide();
                 }
             }
         }
@@ -52,7 +52,7 @@ Item {
                 id: openWindowMenuItem;
                 text: qsTr("Open window")
                 onTriggered: {
-                    applicationWindow.show()
+                    appWindow.show()
                 }
             }
 
@@ -83,7 +83,7 @@ Item {
         onClosing: {
             console.log("send to system tray...")
             close.accepted = false;
-            applicationWindow.hide();
+            appWindow.hide();
         }
     }
 }

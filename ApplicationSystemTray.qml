@@ -36,15 +36,15 @@ Item {
             }
             else
             {
-                if(applicationWindow.visibility === Window.Hidden || applicationWindow.visibility === Window.Minimized)
+                if(appWindow.visibility === Window.Hidden || appWindow.visibility === Window.Minimized)
                 {
-                    applicationWindow.show();
-//                    applicationWindow.raise();
-//                    applicationWindow.requestActivate();
+                    appWindow.show();
+//                    appWindow.raise();
+//                    appWindow.requestActivate();
                 }
                 else
                 {
-                    applicationWindow.hide();
+                    appWindow.hide();
                 }
             }
         }
@@ -74,7 +74,7 @@ Item {
             id: openWindowMenuItem;
             text: qsTr("Open window")
             onTriggered: {
-                applicationWindow.show()
+                appWindow.show()
             }
         }
 
@@ -105,7 +105,7 @@ Item {
         {
             console.log("send to system tray...")
             close.accepted = false;
-            applicationWindow.hide();
+            appWindow.hide();
         }
     }
 }

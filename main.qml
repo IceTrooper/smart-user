@@ -4,7 +4,7 @@ import QtQuick.Controls.Universal 2.14
 import QtQuick.Window 2.14
 
 ApplicationWindow {
-    id: applicationWindow;
+    id: appWindow;
     visible: true;
     width: 600;
     minimumWidth: 600;
@@ -20,9 +20,9 @@ ApplicationWindow {
            Qt.WindowStaysOnTopHint;
 //    color: Qt.rgba(52/255, 52/255, 52/255, 1);
     opacity: 0.98;
-    font.family: fontsLoader.notoName;
+    font.family: fontNoto;
 
-    Universal.background: applicationWindow.Universal.theme === Universal.Light ? "#E4E4E4" : "#1F1F1F";
+    Universal.background: appWindow.Universal.theme === Universal.Light ? "#E4E4E4" : "#1F1F1F";
     background: Rectangle {
         color: Universal.theme === Universal.Light ? "#FFFFFF" : "#000000"
     }
@@ -38,11 +38,11 @@ ApplicationWindow {
 //    ApplicationSystemTray {
 //        id: applicationSystemTray;
 ////        isUsed: false;
-//        mainAppWindowRef: applicationWindow;
+//        mainAppWindowRef: appWindow;
 //    }
     QtSystemTray {
-        id: applicationSystemTray;
-        mainAppWindowRef: applicationWindow;
+        id: appSystemTray;
+        mainAppWindowRef: appWindow;
     }
 
 //    onVisibilityChanged: {
@@ -52,6 +52,9 @@ ApplicationWindow {
 //        }
 //    }
 
+    property alias fontNoto: fontsLoader.notoName;
+    property alias fontOpenSans: fontsLoader.openSansName;
+    property alias fontRobotoMono: fontsLoader.robotoMonoName;
     Fonts {
         id: fontsLoader;
     }

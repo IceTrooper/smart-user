@@ -8,6 +8,8 @@
 #include <QQuickStyle>
 #include "version.h"
 
+#include "nativeeventfilter.h"
+
 Q_DECLARE_METATYPE(QSystemTrayIcon::ActivationReason)
 
 int main(int argc, char *argv[])
@@ -17,6 +19,13 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     QQuickStyle::setStyle("Universal");
+
+    //----- GLOBAL HOT KEYS -----
+//    NativeEventFilter::getInstance()->registerGlobalHotKey("TOGGLEGRID_HK", HK_CTRL | HK_ALT | HK_SHIFT | HK_NOREPEAT, 'D');
+//    NativeEventFilter::getInstance()->registerGlobalHotKey("MOUSE_HK", HK_ALT, 'Q');
+    app.installNativeEventFilter(NativeEventFilter::getInstance());
+    qmlRegisterUncreatableType<NativeEventFilter>("com.icetrooper.hotkeys", 1, 0, "HotKeys", "Cannot create HotKey in QML");
+    //----- GLOBAL HOT KEYS -----
 
     //----- SYSTEM TRAY ICON -----
     // Register QSystemTrayIcon in Qml

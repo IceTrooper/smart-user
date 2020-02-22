@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.14
 
 Page {
     id: hardwareStatsPage;
-    title: "Hardware stats"
+    title: "Hardware stats";
 
     Pane {
         anchors.fill: parent;

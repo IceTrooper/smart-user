@@ -2,6 +2,8 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Controls.Universal 2.14
 
+import "../controls"
+
 Drawer {
     id: applicationDrawer;
     visible: true;
@@ -24,14 +26,21 @@ Drawer {
 //        highlightMoveDuration: 0;
 //        highlight: Component {
 //            Rectangle {
-//                color: applicationWindow.Universal.accent;
+//                color: appWindow.Universal.accent;
 //            }
 //        }
 
         model: DrawerListModel {}
         delegate: ItemDelegate {
             width: parent.width;
-            text: pageName;
+            height: implicitHeight;
+            z: 0.5;
+
+//            text: pageName;
+
+            contentItem: StyledLabel {
+                text: pageName;
+            }
 
             onClicked: {
                 console.log(pageSource);
