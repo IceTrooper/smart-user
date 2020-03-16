@@ -3,7 +3,7 @@ import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 
 import "../components/controls"
-import com.icetrooper.hotkeys 1.0
+//import com.icetrooper.hotkeys 1.0
 
 Page {
     id: hardwareStatsPage;
@@ -40,17 +40,6 @@ Page {
                 text: "App made by IceTrooper"
                 horizontalAlignment: Text.AlignRight;
                 Layout.alignment: Qt.AlignRight;
-            }
-
-            Connections {
-                target: HotKeys;
-                onHk_mouse: {
-                    console.log("JKJ");
-                }
-
-//                onHotKeyActivated: {
-//                    console.log("Oh yeah");
-//                }
             }
 
         } //ColumnLayout

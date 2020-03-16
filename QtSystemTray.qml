@@ -3,7 +3,7 @@ import Qt.labs.platform 1.1
 import QtQuick.Window 2.0
 
 Item {
-    property var mainAppWindowRef;
+    property Window window;
 
     SystemTrayIcon {
         id: systemTray;
@@ -18,12 +18,12 @@ Item {
             }
             else {
                 trayMenu.close();
-                if(appWindow.visibility === Window.Hidden ||
-                   appWindow.visibility === Window.Minimized) {
-                    appWindow.show();
+                if(window.visibility === Window.Hidden ||
+                   window.visibility === Window.Minimized) {
+                    window.show();
                 }
                 else {
-                    appWindow.hide();
+                    window.hide();
                 }
             }
         }
@@ -79,11 +79,19 @@ Item {
     }
 
     Connections {
-        target: mainAppWindowRef;
+        target: window;
         onClosing: {
             console.log("send to system tray...")
+//            console.log(parent, parent.parent, parent.parent.parent)
+//            if(useTray === true) {
+//                close.accepted = false;
+//                window.hide();
+//            } else {
+//                Qt.quit();
+//            }
+
             close.accepted = false;
-            appWindow.hide();
+            window.hide();
         }
     }
 }

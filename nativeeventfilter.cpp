@@ -85,14 +85,14 @@ bool NativeEventFilter::nativeEventFilter(const QByteArray &eventType, void *mes
     Q_UNUSED(eventType);
     Q_UNUSED(result);
 
-    MSG* msg = reinterpret_cast<MSG*>(message);
+    MSG* msg = static_cast<MSG*>(message);
 //    qDebug() << msg->message << msg->wParam << WM_HOTKEY;
 
     if(msg->message == WM_HOTKEY)
     {
 
         qDebug() << "HOTKEY" << msg->wParam;
-        emit hotKeyActivated(this->globalHotKeysMap[msg->wParam]);
+//        emit hotKeyActivated(this->globalHotKeysMap[msg->wParam]);
 //        if(msg->wParam == this->globalHotKeysMap["TOGGLEGRID_HK"])
 //        {
 ////            INPUT Input = {0};

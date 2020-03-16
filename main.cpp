@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QIcon>
+#include <QSettings>
 #include <QSystemTrayIcon>
 #include <QQmlApplicationEngine>
 #include <QQmlEngine>
@@ -9,6 +10,8 @@
 #include "version.h"
 
 #include "nativeeventfilter.h"
+#include "mousehook.h"
+#include "mouseanalyzer.h"
 
 Q_DECLARE_METATYPE(QSystemTrayIcon::ActivationReason)
 
@@ -18,14 +21,24 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
+    app.setQuitOnLastWindowClosed(false);
+
     QQuickStyle::setStyle("Universal");
 
-    //----- GLOBAL HOT KEYS -----
-//    NativeEventFilter::getInstance()->registerGlobalHotKey("TOGGLEGRID_HK", HK_CTRL | HK_ALT | HK_SHIFT | HK_NOREPEAT, 'D');
-//    NativeEventFilter::getInstance()->registerGlobalHotKey("MOUSE_HK", HK_ALT, 'Q');
-    app.installNativeEventFilter(NativeEventFilter::getInstance());
-    qmlRegisterUncreatableType<NativeEventFilter>("com.icetrooper.hotkeys", 1, 0, "HotKeys", "Cannot create HotKey in QML");
-    //----- GLOBAL HOT KEYS -----
+    app.setApplicationName(VER_PRODUCTVERSION_STR);
+    app.setOrganizationName(VER_COMPANYNAME_STR);
+    app.setOrganizationDomain(VER_COMPANYDOMAIN_STR);
+    app.setApplicationDisplayName(VER_PRODUCTNAME_STR);
+    QSettings::setDefaultFormat(QSettings::IniFormat);
+
+//    qmlRegisterSingletonType<MouseHook>("MouseHook", 1, 0, "QmlMouseHook", QmlMouseHookSingletonProvider);
+
+//    //----- GLOBAL HOT KEYS -----
+////    NativeEventFilter::getInstance()->registerGlobalHotKey("TOGGLEGRID_HK", HK_CTRL | HK_ALT | HK_SHIFT | HK_NOREPEAT, 'D');
+////    NativeEventFilter::getInstance()->registerGlobalHotKey("MOUSE_HK", HK_ALT, 'Q');
+//    app.installNativeEventFilter(NativeEventFilter::getInstance());
+//    qmlRegisterUncreatableType<NativeEventFilter>("com.icetrooper.hotkeys", 1, 0, "HotKeys", "Cannot create HotKey in QML");
+//    //----- GLOBAL HOT KEYS -----
 
     //----- SYSTEM TRAY ICON -----
     // Register QSystemTrayIcon in Qml
@@ -37,6 +50,13 @@ int main(int argc, char *argv[])
     //----- SYSTEM TRAY ICON -----
 
     engine.rootContext()->setContextProperty("appVersion", VER_FILEVERSION_STR);
+    engine.rootContext()->setContextProperty("mouseHookQML", MouseHook::getInstance());
+    MouseHook::getInstance()->installHook();
+
+    qmlRegisterUncreatableType<MouseData>("MouseData", 1, 0, "MouseData", "MouseData class uncreatable");
+    MouseAnalyzer mouseAnalyzer(nullptr, app.screens());
+    engine.rootContext()->setContextProperty("mouseAnalyzer", &mouseAnalyzer);
+//    qmlRegisterUncreatableType<MouseAnalyzer>("Analyzer", 1, 0, "MouseAnalyzer", "MouseAnalyzer class uncreatable");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -46,8 +66,8 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
     engine.load(url);
 
-    QObject::connect(&app, SIGNAL(aboutToQuit()), engine.rootObjects().first(), SIGNAL(aboutToQuit()));
-    QObject::connect(&app, SIGNAL(applicationStateChanged(Qt::ApplicationState)), engine.rootObjects().first(), SIGNAL(stateChanged()));
+//    QObject::connect(&app, SIGNAL(aboutToQuit()), engine.rootObjects().first(), SIGNAL(aboutToQuit()));
+//    QObject::connect(&app, SIGNAL(applicationStateChanged(Qt::ApplicationState)), engine.rootObjects().first(), SIGNAL(stateChanged()));
 
     return app.exec();
 }

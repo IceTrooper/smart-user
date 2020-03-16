@@ -1,74 +1,31 @@
 import QtQuick 2.14
-import QtQuick.Controls 2.14
-import QtQuick.Controls.Universal 2.14
-import QtQuick.Window 2.14
+import Qt.labs.settings 1.1
 
-ApplicationWindow {
-    id: appWindow;
-    visible: true;
-    width: 600;
-    minimumWidth: 600;
-    height: 380;
-    minimumHeight: 380;
-    title: qsTr("Smart User 1.0");
-    flags: Qt.Window |
-           //Qt.MSWindowsFixedSizeDialogHint |
-           Qt.WindowSystemMenuHint |
-           Qt.WindowTitleHint |
-           Qt.WindowMinimizeButtonHint |
-           Qt.WindowCloseButtonHint |
-           Qt.WindowStaysOnTopHint;
-//    color: Qt.rgba(52/255, 52/255, 52/255, 1);
-    opacity: 0.98;
-    font.family: fontNoto;
+import "windows"
 
-    Universal.background: appWindow.Universal.theme === Universal.Light ? "#E4E4E4" : "#1F1F1F";
-    background: Rectangle {
-        color: Universal.theme === Universal.Light ? "#FFFFFF" : "#000000"
-    }
-
-    signal aboutToQuit;
-    signal stateChanged;
+Item {
 
     MainWindow {
         id: mainWindow;
-        anchors.fill: parent;
-    } //MainWindow
-
-//    ApplicationSystemTray {
-//        id: applicationSystemTray;
-////        isUsed: false;
-//        mainAppWindowRef: appWindow;
-//    }
-    QtSystemTray {
-        id: appSystemTray;
-        mainAppWindowRef: appWindow;
     }
 
-//    onVisibilityChanged: {
-//        if ( visibility === Window.Minimized ) {
-//            // When minimizied
-//            hide()
-//        }
-//    }
-
-    property alias fontNoto: fontsLoader.notoName;
-    property alias fontOpenSans: fontsLoader.openSansName;
-    property alias fontRobotoMono: fontsLoader.robotoMonoName;
+    property alias fonts: fontsLoader.fonts;
     Fonts {
         id: fontsLoader;
     }
 
-    onStateChanged: {
-        console.log("STATE CHANGED", Qt.application.state);
+    Settings {
+        id: mainSettings;
+        category: "general";
     }
 
-    onClosing: {
-        console.log(Qt.application.state);
+    ApplicationsListModel {
+        id: appsListModel;
     }
 
-    onAboutToQuit: {
-        console.log("ABOUT TO QUIT");
-//        nativeEventFilterQML.unregisterAllGlobalHotKeys();
+//    property alias winLoaders: windowLoaders.loaders;
+    WindowLoaders {
+        id: windowLoaders;
     }
 }
+

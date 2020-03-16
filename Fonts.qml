@@ -1,9 +1,16 @@
 import QtQuick 2.14
 
 Item {
-    property alias notoName: notoLoader.name;
-    property alias openSansName: openSansLoader.name;
-    property alias robotoMonoName: robotoMonoLoader.name;
+    property alias fonts: _fonts;
+
+    QtObject {
+        id: _fonts;
+
+        property alias notoName: notoLoader.name;
+        property alias openSansName: openSansLoader.name;
+        property alias robotoMonoName: robotoMonoLoader.name;
+        property alias segoeMDL2AssetsName: segoeMDL2AssetsLoader.name;
+    }
 
     FontLoader {
         id: openSansLoader;
@@ -39,5 +46,10 @@ Item {
     }
     FontLoader {
         source: "qrc:/fonts/RobotoMono-Bold.ttf";
+    }
+
+    FontLoader {
+        id: segoeMDL2AssetsLoader;
+        source: "qrc:/fonts/SegMDL2.ttf";
     }
 }

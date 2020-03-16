@@ -47,7 +47,8 @@ protected:
 signals:
 //    void hk_togglegrid();
     void hk_mouse();
-    void hotKeyActivated(QString name);
+//    void hotKeyActivated(QString name);
+    void activateHotKey(quint32 nativeKey, quint32 nativeMods);
 
 public slots:
     bool findGlobalHotKey(QString globalHotKeyName, int &idOut);

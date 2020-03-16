@@ -3,7 +3,6 @@
         <file>main.qml</file>
         <file>graphics/su_icon.ico</file>
         <file>ApplicationSystemTray.qml</file>
-        <file>MainWindow.qml</file>
         <file>QtSystemTray.qml</file>
         <file>Fonts.qml</file>
         <file>fonts/OpenSans-Bold.ttf</file>
@@ -12,7 +11,6 @@
         <file>pages/HomePage.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>components/drawer/ApplicationDrawer.qml</file>
-        <file>components/drawer/DrawerListModel.qml</file>
         <file>pages/HardwareStatsPage.qml</file>
         <file>components/controls/StyledTitleLabel.qml</file>
         <file>components/controls/StyledLabel.qml</file>
@@ -24,5 +22,20 @@
         <file>fonts/RobotoMono-Light.ttf</file>
         <file>fonts/RobotoMono-Medium.ttf</file>
         <file>fonts/RobotoMono-Regular.ttf</file>
+        <file>fonts/SegMDL2.ttf</file>
+        <file>components/drawer/DrawerHeader.qml</file>
+        <file>components/drawer/DrawerDelegate.qml</file>
+        <file>components/drawer/DrawerFooter.qml</file>
+        <file>components/controls/StyledSeparator.qml</file>
+        <file>ApplicationsListModel.qml</file>
+        <file>windows/WindowLoaders.qml</file>
+        <file>windows/MainWindow.qml</file>
+        <file>components/hardwareStats/ClicksCircularGauge.qml</file>
+        <file>components/hardwareStats/StatsInfo.qml</file>
+        <file>components/hardwareStats/DistanceStatsInfo.qml</file>
+        <file>components/hardwareStats/PositionStatsInfo.qml</file>
+        <file>components/hardwareStats/StatsInfoTitle.qml</file>
+        <file>components/hardwareStats/StatsInfoCount.qml</file>
+        <file>graphics/circuit_green_seamless.jpg</file>
     </qresource>
 </RCC>

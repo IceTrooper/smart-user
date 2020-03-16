@@ -13,8 +13,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+include(3rdParties/qhotkey.pri)
+
 SOURCES += \
         main.cpp \
+        mouseanalyzer.cpp \
+        mousedata.cpp \
+        mousehook.cpp \
         nativeeventfilter.cpp
 
 RESOURCES += qml.qrc
@@ -40,6 +45,13 @@ win32 {
     RC_FILE += resources.rc
 }
 
+#macx {
+#    ICON = icon.icns
+#}
+
 HEADERS += \
+    mouseanalyzer.h \
+    mousedata.h \
+    mousehook.h \
     nativeeventfilter.h \
     version.h

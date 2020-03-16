@@ -17,6 +17,8 @@
 #define VER_INTERNALNAME_STR        "SmartUser\0" //original filename withouth extenstion
 #define VER_PRODUCTNAME_STR         "SmartUser\0" //name of the product
 
+#define VER_COMPANYDOMAIN_STR       "trooperice.com"
+
 #endif // VERSION_H
 
 //https://docs.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block
